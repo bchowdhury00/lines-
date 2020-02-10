@@ -1,5 +1,5 @@
 /*====================== display.c ========================
-Contains functions for basic manipulation of a screen 
+Contains functions for basic manipulation of a screen
 represented as a 2 dimensional array of colors.
 
 A color is an ordered triple of ints, with each value standing
@@ -19,11 +19,11 @@ for red, green and blue respectively
 Inputs:   screen s
          color c
          int x
-         int y 
-Returns: 
+         int y
+Returns:
 Sets the color at pixel x, y to the color represented by c
-Note that s[0][0] will be the upper left hand corner 
-of the screen. 
+Note that s[0][0] will be the upper left hand corner
+of the screen.
 If you wish to change this behavior, you can change the indicies
 of s that get set. For example, using s[x][YRES-1-y] will have
 pixel 0, 0 located at the lower left corner of the screen
@@ -35,8 +35,8 @@ void plot( screen s, color c, int x, int y) {
 }
 
 /*======== void clear_screen() ==========
-Inputs:   screen s  
-Returns: 
+Inputs:   screen s
+Returns:
 Sets every color in screen s to black
 ====================*/
 void clear_screen( screen s ) {
@@ -49,14 +49,14 @@ void clear_screen( screen s ) {
   c.blue = DEFAULT_COLOR;
 
   for ( y=0; y < YRES; y++ )
-    for ( x=0; x < XRES; x++)      
+    for ( x=0; x < XRES; x++)
       s[x][y] = c;
 }
 
 /*======== void save_ppm() ==========
 Inputs:   screen s
-         char *file 
-Returns: 
+         char *file
+Returns:
 Saves screen s as a valid ppm file using the settings in ml6.h
 ====================*/
 void save_ppm( screen s, char *file) {
@@ -82,8 +82,8 @@ void save_ppm( screen s, char *file) {
 
 /*======== void save_ppm_ascii() ==========
 Inputs:   screen s
-         char *file 
-Returns: 
+         char *file
+Returns:
 Saves screen s as a valid ppm file using the
 settings in ml6.h
 ====================*/
@@ -147,7 +147,6 @@ void display( screen s) {
   fprintf(f, "P3\n%d %d\n%d\n", XRES, YRES, MAX_COLOR);
   for ( y=0; y < YRES; y++ ) {
     for ( x=0; x < XRES; x++)
-
       fprintf(f, "%d %d %d ", s[x][y].red, s[x][y].green, s[x][y].blue);
     fprintf(f, "\n");
   }
