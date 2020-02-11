@@ -125,11 +125,20 @@ void octantFourLine(int x0, int y0, int x1, int y1, screen s, color c){
 }
 
 void findMidpoint(int x0,int y0, int x1, int y1, int * x, int * y){
-  double x2 = ((double)x1 - (double)x0)/2;
-  double y2 = ((double)y1 - (double)y0)/2;
-  *x = abs((int)floor(x2));
-  *y = abs((int)floor(y2));
-  return;
+  if (x0 < x1){
+    double d = ((double)x1 - (double)x0)/2;
+    *x = x0 + (int)d;
+  }else{
+    double d = ((double)x0 - (double)x1)/2;
+    *x = x1 + (int)d;
+  }
+  if (y0 < y1){
+    double d = ((double)y1 - (double)x0)/2;
+    *y = y0 + (int)d;
+  }else{
+    double d = ((double)y0 - (double)y1);
+    *y = y1 + (int)d;
+  }
 }
 
 void sierpinski_sieve(screen s,color c,int iterations){
