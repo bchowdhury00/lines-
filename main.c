@@ -44,4 +44,9 @@ int main() {
   save_extension(s, "lines.png");
   save_ppm(s, "binary.ppm");
   save_ppm_ascii(s, "ascii.ppm");
+  printf("Tester picture = lines.png\n");
+  clear_screen(s);
+  sierpinski_sieve(s,c,10);
+  save_extension(s,"sierpinski_sieve.png");
+  save_ppm(s, "sierpinski_sieve.ppm");
 }
