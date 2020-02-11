@@ -136,7 +136,7 @@ void findMidpoint(int x0,int y0, int x1, int y1, int * x, int * y){
     double d = ((double)y1 - (double)x0)/2;
     *y = y0 + (int)d;
   }else{
-    double d = ((double)y0 - (double)y1);
+    double d = ((double)y0 - (double)y1)/2;
     *y = y1 + (int)d;
   }
 }
@@ -165,8 +165,12 @@ void sierpinski_sieve_helper(screen s, color c, int iterations, int x0, int y0,i
   draw_line(newx0,newy0,newx1,newy1,s,c);
   draw_line(newx1,newy1,newx2,newy2,s,c);
   draw_line(newx2,newy2,newx0,newy0,s,c);
-  sierpinski_sieve_helper(s,c,iterations - 1,x0,y0,newx0,newy0,newx1,newy1);
-  sierpinski_sieve_helper(s,c,iterations - 1,newx0,newy0,x1,y1,newx2,newy2);
-  sierpinski_sieve_helper(s,c,iterations - 1,newx1,newy1,newx2,newy2,x2,y2);
+  color newc;
+  newc.red = rand() % 255;
+  newc.blue = rand() % 255;
+  newc.green = rand() % 255;
+  sierpinski_sieve_helper(s,newc,iterations - 1,x0,y0,newx0,newy0,newx2,newy2);
+  sierpinski_sieve_helper(s,newc,iterations - 1,newx0,newy0,x1,y1,newx1,newy1);
+  sierpinski_sieve_helper(s,newc,iterations - 1,newx2,newy2,newx1,newy1,x2,y2);
   return;
 }

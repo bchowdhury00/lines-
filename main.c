@@ -5,6 +5,7 @@
 #include "ml6.h"
 #include "display.h"
 #include "draw.h"
+#include <time.h>
 
 int main() {
 
@@ -46,7 +47,11 @@ int main() {
   save_ppm_ascii(s, "ascii.ppm");
   printf("Tester picture = lines.png\n");
   clear_screen(s);
-  sierpinski_sieve(s,c,3);
+  c.red = 50;
+  c.green = 50;
+  c.blue = 50;
+  srand(time(0));
+  sierpinski_sieve(s,c,10);
   save_extension(s,"sierpinski_sieve.png");
   save_ppm(s, "sierpinski_sieve.ppm");
 }
